@@ -218,15 +218,14 @@
   .contato{padding:50px 0 60px;text-align:center}
   .contato h2{font-weight:900;font-size:clamp(2.2rem,8vw,4rem);letter-spacing:-.03em;margin-bottom:14px}
   .contato h2 em{font-style:normal;background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .contato .lead{color:var(--bone-dim);max-width:440px;margin:0 auto 40px;font-size:1.05rem}
-  .contato-links{display:grid;gap:14px;max-width:420px;margin:0 auto}
-  .clink{display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--bone);background:var(--ink-soft);border:2px solid var(--line);border-radius:18px;padding:18px 20px;transition:.3s;text-align:left}
-  .clink:hover{border-color:var(--roxo-bright);transform:translateY(-3px)}
-  .clink-ico{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--roxo),var(--laranja))}
-  .clink-ico svg{width:22px;height:22px;stroke:#fff}
-  .clink .lab{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem}
-  .clink .sub{font-size:.84rem;color:var(--bone-dim)}
-  .clink .arr{margin-left:auto;color:var(--bone-dim);font-size:1.3rem}
+  .contato .lead{color:var(--bone-dim);max-width:440px;margin:0 auto 32px;font-size:1.05rem}
+  .contato-cta{display:flex;align-items:center;justify-content:center;gap:10px;max-width:420px;margin:0 auto 20px;padding:19px;border-radius:100px;background:linear-gradient(120deg,var(--roxo),var(--rosa),var(--laranja));color:#fff;font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem;text-decoration:none;box-shadow:0 14px 34px rgba(198,107,255,.32);transition:.3s}
+  .contato-cta:hover{transform:translateY(-3px)}
+  .contato-cta svg{width:21px;height:21px;stroke:#fff;flex:none}
+  .contato-others{display:flex;justify-content:center;gap:28px}
+  .contato-others a{display:flex;align-items:center;gap:7px;color:var(--bone-dim);font-size:.82rem;text-decoration:none;transition:.3s}
+  .contato-others a:hover{color:var(--laranja-bright)}
+  .contato-others svg{width:16px;height:16px;stroke:currentColor;flex:none}
 
   footer{padding:54px 0 46px;border-top:2px solid var(--line);text-align:center}
   footer .logo{display:block;margin-bottom:18px;font-size:1.1rem}
@@ -555,6 +554,18 @@
   </div>
 </section>
 
+<section class="contato" id="contato">
+  <div class="wrap reveal">
+    <h2>Vamos <em>nessa</em>?</h2>
+    <p class="lead">Entre em contato e descubra o melhor caminho para o seu negócio crescer.</p>
+    <a href="https://wa.me/5516981698918" class="contato-cta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>Falar no WhatsApp</a>
+    <div class="contato-others">
+      <a href="https://instagram.com/vicbitto.mkt" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>Instagram</a>
+      <a href="mailto:agencia.bitto@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>E-mail</a>
+    </div>
+  </div>
+</section>
+
 <!-- QUEM ESTÁ POR TRÁS -->
 <section class="founder" id="fundadora">
   <div class="wrap reveal">
@@ -565,20 +576,6 @@
       <div class="founder-foot-text"><b>Victória Bitencourt</b><small>Fundadora · Agência Bitto</small></div>
     </div>
     <p class="founder-sub">Cada marca atendida recebe atenção real, visão de posicionamento e um processo pensado para crescer com consistência.</p>
-  </div>
-</section>
-
-<section class="contato" id="contato">
-  <div class="wrap reveal">
-    <h2>Vamos <em>nessa</em>?</h2>
-    <p class="lead">Me chama que a gente bate um papo sobre o melhor caminho pro seu negócio.</p>
-    <div class="contato-links">
-      <!-- ===== EDITE OS CONTATOS AQUI ===== -->
-      <a href="https://wa.me/5516981698918" class="clink" target="_blank" rel="noopener"><span class="clink-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></span><span><span class="lab">WhatsApp</span><br><span class="sub">(16) 98169-8918</span></span><span class="arr">&#8594;</span></a>
-      <a href="https://instagram.com/vicbitto.mkt" class="clink" target="_blank" rel="noopener"><span class="clink-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></span><span><span class="lab">Instagram</span><br><span class="sub">@vicbitto.mkt</span></span><span class="arr">&#8594;</span></a>
-      <a href="mailto:agencia.bitto@gmail.com" class="clink"><span class="clink-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></span><span><span class="lab">E-mail</span><br><span class="sub">agencia.bitto@gmail.com</span></span><span class="arr">&#8594;</span></a>
-      <!-- ===== FIM ===== -->
-    </div>
   </div>
 </section>
 
