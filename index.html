@@ -96,7 +96,8 @@
   .side-menu .sm-contacts a:hover{color:var(--laranja-bright)}
   .side-menu .sm-contacts svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
 
-  .hero{min-height:auto;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;padding:100px 26px 40px}
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:110px 26px 50px;background-image:url('imagens/hero-bg.jpg');background-size:cover;background-position:center right;background-repeat:no-repeat;isolation:isolate}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(18,14,31,.82) 0%,rgba(18,14,31,.55) 45%,rgba(18,14,31,.8) 100%),linear-gradient(100deg,rgba(18,14,31,.85) 0%,rgba(18,14,31,.45) 55%,rgba(18,14,31,.25) 100%)}
   .hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(2.4rem,10vw,4.8rem);line-height:1.08;letter-spacing:-.02em;text-transform:uppercase;opacity:0;animation:pop 1s cubic-bezier(.34,1.56,.64,1) 2.2s forwards}
   .hero h1 .grad{background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
   @keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
@@ -168,11 +169,10 @@
 
   /* depoimentos */
   .depo{padding:40px 0 50px;border-top:1px solid var(--line);overflow:hidden}
-  .depo-track-wrap{overflow:hidden}
-  .depo-track{display:flex;gap:16px;width:max-content;padding:6px 26px;animation:depoScroll 38s linear infinite}
-  .depo:hover .depo-track{animation-play-state:paused}
-  @keyframes depoScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  .depo-card{flex:0 0 300px;background:linear-gradient(160deg,var(--ink-soft),rgba(28,22,48,.55));border:1px solid var(--line);border-radius:18px;padding:24px 22px;display:flex;flex-direction:column}
+  .depo-track-wrap{overflow:hidden;padding:6px 0}
+  .depo-track{display:flex;gap:16px;width:max-content;will-change:transform}
+  .depo-card{flex:0 0 300px;background:linear-gradient(160deg,var(--ink-soft),rgba(28,22,48,.55));border:1px solid var(--line);border-radius:18px;padding:24px 22px;display:flex;flex-direction:column;margin-left:0}
+  .depo-track>.depo-card:first-child{margin-left:26px}
   .depo-stars{display:flex;gap:3px;margin-bottom:14px}
   .depo-stars svg{width:16px;height:16px;fill:var(--laranja-bright);stroke:none}
   .depo-text{font-size:.92rem;line-height:1.55;color:var(--bone);flex:1}
@@ -482,7 +482,7 @@
     <div class="sec-head reveal"><span class="eyebrow">Feedbacks</span><h2>O que dizem sobre a <em>Bitto</em></h2></div>
   </div>
   <div class="depo-track-wrap reveal">
-    <div class="depo-track">
+    <div class="depo-track" id="depoTrack">
       <!-- bloco 1 -->
       <div class="depo-card"><div class="depo-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg></div><p class="depo-text">"Escolher você pra cuidar da rede social do salão foi a melhor coisa que eu fiz! Você é incrível, atenciosa, detalhista e super paciente. Tô amando o seu trabalho ❤️"</p><div class="depo-who"><span class="depo-av">S</span><span><b>Cliente</b><small>Salão de beleza</small></span></div></div>
       <div class="depo-card"><div class="depo-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg></div><p class="depo-text">"Vim agradecer! Tem salvado minha vida. Não tenho tempo pra manter minha página atualizada, e contratar seu trabalho foi maravilhoso. Seu capricho e sua atenção aos detalhes... só agradecer. Fim da era das postagens atrasadas!"</p><div class="depo-who"><span class="depo-av">P</span><span><b>Cliente</b><small>Profissional autônoma</small></span></div></div>
@@ -581,6 +581,27 @@
     document.getElementById('prevBtn').addEventListener('click',function(){scrollByCard(-1)});
     document.getElementById('nextBtn').addEventListener('click',function(){scrollByCard(1)});
   }
+
+  // depoimentos: loop infinito suave controlado por JS (nunca para)
+  (function(){
+    var track=document.getElementById('depoTrack');
+    if(!track)return;
+    var pos=0, speed=0.4, paused=false;
+    function half(){ return track.scrollWidth/2; }
+    track.addEventListener('mouseenter',function(){paused=true});
+    track.addEventListener('mouseleave',function(){paused=false});
+    track.addEventListener('touchstart',function(){paused=true},{passive:true});
+    track.addEventListener('touchend',function(){paused=false},{passive:true});
+    function step(){
+      if(!paused){
+        pos+=speed;
+        if(pos>=half()){ pos-=half(); }
+        track.style.transform='translateX(-'+pos+'px)';
+      }
+      requestAnimationFrame(step);
+    }
+    step();
+  })();
 
   // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(function(item){
