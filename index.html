@@ -7,7 +7,7 @@
 <meta name="description" content="A Bitto cria presença digital com propósito.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Sora:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#120E1F; --ink-soft:#1C1630; --ink-2:#241B3D;
@@ -46,55 +46,58 @@
   header.solid{background:rgba(18,14,31,.85);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
   .logo{text-align:center;line-height:1}
   .logo .kicker{display:block;font-family:'Outfit',sans-serif;font-weight:600;font-size:.5rem;letter-spacing:.45em;text-indent:.45em;text-transform:uppercase;color:var(--laranja-bright);margin-bottom:.35em}
-  .logo .word{display:block;font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;letter-spacing:.04em;background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .logo .word{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.6rem;letter-spacing:.01em;text-transform:none;background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
   .nav-cta{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--ink);text-decoration:none;background:var(--laranja-bright);padding:11px 20px;border-radius:100px;transition:.3s;font-family:'Outfit',sans-serif}
   .nav-cta:hover{transform:scale(1.05)}
   @keyframes navReveal{from{opacity:0}to{opacity:1}}
 
   /* botão hambúrguer */
-  .menu-btn{position:absolute;left:26px;top:50%;transform:translateY(-50%);width:38px;height:38px;display:grid;place-items:center;background:transparent;border:1px solid var(--line);border-radius:11px;cursor:pointer;z-index:170;opacity:0;animation:navReveal .6s ease 2.5s forwards;transition:border-color .3s}
-  .menu-btn:hover{border-color:var(--roxo-bright)}
+  .menu-btn{position:absolute;left:14px;top:50%;transform:translateY(-50%);height:38px;padding:0 16px;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:100px;cursor:pointer;z-index:170;opacity:0;animation:navReveal .6s ease 2.5s forwards;transition:.3s}
+  .menu-btn:hover{border-color:var(--line-roxo);background:rgba(139,47,201,.14)}
+  .menu-btn .mtxt{font-family:'Outfit',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.16em;color:var(--bone);text-transform:uppercase}
+  .menu-btn .mbars{display:flex;flex-direction:column;gap:3px}
   .header-actions{position:absolute;right:26px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:10px;opacity:0;animation:navReveal .6s ease 2.5s forwards}
-  .header-wa{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--line);border-radius:11px;transition:.3s}
-  .header-wa svg{width:19px;height:19px;stroke:var(--laranja-bright);fill:none;stroke-width:2}
-  .header-wa:hover{border-color:var(--roxo-bright);background:rgba(139,47,201,.12)}
-  .menu-btn span{display:block;width:18px;height:2px;background:var(--bone);border-radius:2px;transition:.35s;position:relative}
-  .menu-btn span+span{margin-top:4px}
-  body.menu-open .menu-btn span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-  body.menu-open .menu-btn span:nth-child(2){opacity:0}
-  body.menu-open .menu-btn span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  .header-wa{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;transition:.3s;background:linear-gradient(135deg,var(--roxo),var(--rosa));box-shadow:0 4px 14px rgba(255,111,181,.25)}
+  .header-wa svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2}
+  .header-wa:hover{transform:scale(1.08);box-shadow:0 6px 18px rgba(255,111,181,.4)}
+  .menu-btn .mbars span{display:block;width:14px;height:2px;background:var(--laranja-bright);border-radius:2px;transition:.35s;position:relative}
+  body.menu-open .menu-btn .mbars span:nth-child(1){transform:translateY(2.5px) rotate(45deg)}
+  body.menu-open .menu-btn .mbars span:nth-child(2){transform:translateY(-2.5px) rotate(-45deg)}
 
   /* overlay escuro */
   .menu-overlay{position:fixed;inset:0;background:rgba(8,6,14,.6);backdrop-filter:blur(2px);z-index:180;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
   body.menu-open .menu-overlay{opacity:1;visibility:visible}
 
   /* painel lateral */
-  .side-menu{position:fixed;top:0;left:0;bottom:0;width:min(82vw,340px);background:linear-gradient(160deg,var(--ink-2),var(--ink));border-right:1px solid var(--line-roxo);z-index:190;transform:translateX(-100%);transition:transform .45s cubic-bezier(.6,0,.25,1);display:flex;flex-direction:column;padding:30px 28px;box-shadow:20px 0 60px rgba(0,0,0,.5);overflow:hidden}
+  .side-menu{position:fixed;top:0;left:0;bottom:0;width:min(82vw,340px);background:linear-gradient(160deg,var(--ink-2),var(--ink));border-right:1px solid var(--line-roxo);z-index:190;transform:translateX(-100%);transition:transform .45s cubic-bezier(.6,0,.25,1);display:flex;flex-direction:column;box-shadow:20px 0 60px rgba(0,0,0,.5);overflow:hidden}
   body.menu-open .side-menu{transform:translateX(0)}
   .side-menu::before{content:"";position:absolute;top:-60px;left:-60px;width:240px;height:240px;background:radial-gradient(circle,rgba(139,47,201,.35),transparent 70%);filter:blur(40px);pointer-events:none}
   .side-menu::after{content:"";position:absolute;bottom:-40px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(240,160,40,.22),transparent 70%);filter:blur(40px);pointer-events:none}
   .side-menu>*{position:relative;z-index:1}
-  .side-menu .sm-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:30px}
+  .side-menu .sm-scroll{flex:1;overflow-y:auto;padding:30px 28px;display:flex;flex-direction:column;-webkit-overflow-scrolling:touch}
+  .side-menu .sm-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:44px;flex-shrink:0}
   .side-menu .sm-logo{line-height:1}
   .side-menu .sm-logo .sk{display:block;font-family:'Outfit',sans-serif;font-weight:600;font-size:.5rem;letter-spacing:.42em;text-transform:uppercase;color:var(--laranja-bright);margin-bottom:.35em}
-  .side-menu .sm-logo .sw{display:block;font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:.04em;background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .side-menu .sm-logo .sw{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.4rem;letter-spacing:.01em;text-transform:none;background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
   .side-menu .sm-close{width:36px;height:36px;display:grid;place-items:center;background:transparent;border:1px solid var(--line);border-radius:10px;cursor:pointer;color:var(--bone-dim);font-size:1.1rem;transition:.3s}
   .side-menu .sm-close:hover{border-color:var(--roxo-bright);color:var(--bone)}
-  .side-menu nav{display:flex;flex-direction:column;gap:2px}
-  .side-menu nav a{font-family:'Outfit',sans-serif;text-decoration:none;padding:16px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;transition:.3s}
-  .side-menu nav a .num{font-size:.7rem;color:var(--laranja-bright);font-weight:600;padding-top:5px}
-  .side-menu nav a .txt{display:flex;flex-direction:column}
-  .side-menu nav a .txt b{font-weight:700;font-size:1.2rem;color:var(--bone);letter-spacing:-.01em}
-  .side-menu nav a .txt small{font-weight:400;font-size:.72rem;color:var(--bone-dim);font-family:'Sora',sans-serif;letter-spacing:.02em;margin-top:1px}
-  .side-menu nav a:hover{padding-left:8px}
-  .side-menu nav a:hover .txt b{color:var(--laranja-bright)}
-  .side-menu .sm-foot{margin-top:auto;padding-top:22px}
-  .side-menu .sm-foot a.fc{display:block;text-align:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.92rem;text-transform:uppercase;letter-spacing:.04em;color:#fff;background:linear-gradient(120deg,var(--roxo),var(--rosa),var(--laranja));padding:16px;border-radius:100px;text-decoration:none;transition:.3s}
+  .side-menu nav{display:flex;flex-direction:column}
+  .side-menu nav a{font-family:'Outfit',sans-serif;text-decoration:none;padding:16px 0;display:flex;align-items:baseline;gap:16px;transition:.3s;border-bottom:1px solid rgba(255,255,255,.07);position:relative}
+  .side-menu nav a:last-child{border-bottom:none}
+  .side-menu nav a::before{content:"";position:absolute;left:0;bottom:-1px;width:0;height:1px;background:linear-gradient(90deg,var(--laranja-bright),var(--rosa));transition:width .35s ease}
+  .side-menu nav a:hover::before{width:100%}
+  .side-menu nav a .num{font-size:.64rem;color:var(--bone-dim);font-weight:600;letter-spacing:.04em;min-width:20px;font-family:'Outfit',sans-serif;position:relative;top:-1px}
+  .side-menu nav a b{font-weight:600;font-size:1.05rem;color:var(--bone);letter-spacing:-.01em;text-transform:none}
+  .side-menu nav a:hover{padding-left:6px}
+  .side-menu nav a:hover .num{color:var(--laranja-bright)}
+  .side-menu nav a:hover b{color:var(--roxo-bright)}
+  .side-menu .sm-foot{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);flex-shrink:0}
+  .side-menu .sm-foot a.fc{display:block;text-align:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em;color:#fff;background:linear-gradient(120deg,var(--roxo),var(--rosa),var(--laranja));padding:15px;border-radius:100px;text-decoration:none;transition:.3s}
   .side-menu .sm-foot a.fc:hover{transform:translateY(-2px)}
   .side-menu .sm-contacts{display:flex;justify-content:center;gap:22px;margin-top:18px}
-  .side-menu .sm-contacts a{display:flex;align-items:center;gap:6px;font-size:.74rem;color:var(--bone-dim);text-decoration:none;transition:.3s}
+  .side-menu .sm-contacts a{display:flex;align-items:center;gap:6px;font-size:.7rem;color:var(--bone-dim);text-decoration:none;transition:.3s;letter-spacing:.02em}
   .side-menu .sm-contacts a:hover{color:var(--laranja-bright)}
-  .side-menu .sm-contacts svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+  .side-menu .sm-contacts svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
 
   .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:110px 26px 50px;background-image:url('imagens/hero-bg.jpg');background-size:cover;background-position:center right;background-repeat:no-repeat;isolation:isolate}
   .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(18,14,31,.78) 0%,rgba(18,14,31,.5) 40%,rgba(18,14,31,.75) 80%,var(--ink) 100%),linear-gradient(100deg,rgba(18,14,31,.85) 0%,rgba(18,14,31,.45) 55%,rgba(18,14,31,.3) 100%)}
@@ -124,7 +127,8 @@
   .marquee__track .dot{padding:0 20px;font-size:.32rem;color:var(--laranja-bright);transform:translateY(-3px)}
   @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  .manifesto{padding:50px 0 60px;text-align:center}
+  .manifesto{padding:50px 0 60px;text-align:center;position:relative;isolation:isolate;background-image:url('imagens/fundo-manifesto.jpg');background-size:cover;background-position:center}
+  .manifesto::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--ink) 0%,rgba(18,14,31,.72) 25%,rgba(18,14,31,.72) 75%,var(--ink) 100%)}
   .manifesto p{font-family:'Outfit',sans-serif;font-weight:600;font-size:clamp(1.25rem,4vw,2.2rem);line-height:1.28;letter-spacing:-.02em;max-width:780px;margin:0 auto;text-wrap:balance}
   .manifesto .lead{display:block;font-weight:900;font-size:1.9em;line-height:1.02;margin-bottom:.35em;background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
   .manifesto .hl{background:linear-gradient(120deg,var(--roxo-bright),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -140,7 +144,8 @@
   .pillar p{color:var(--bone-dim);font-size:.88rem;line-height:1.5}
 
   .sec-head{text-align:center;margin-bottom:34px}
-  .sec-head .eyebrow{display:inline-block;color:var(--ink);background:var(--laranja-bright);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:6px 16px;border-radius:100px;margin-bottom:18px;font-family:'Outfit',sans-serif}
+  .sec-head .eyebrow{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--laranja);background:none;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;font-weight:700;padding:0;border-radius:0;margin-bottom:18px;font-family:'Outfit',sans-serif}
+  .sec-head .eyebrow::before,.sec-head .eyebrow::after{content:"";width:34px;height:2px;background:var(--laranja);border-radius:2px}
   .sec-head h2{font-weight:900;font-size:clamp(2.2rem,8vw,3.8rem);letter-spacing:-.03em}
   .sec-head h2 em{font-style:normal;background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
 
@@ -235,7 +240,7 @@
 
   /* ===== CTA MEIO ===== */
   .midcta{padding:54px 0;position:relative;overflow:hidden}
-  .midcta-box{position:relative;background:linear-gradient(150deg,rgba(139,47,201,.22),rgba(240,160,40,.14));border:1px solid var(--line-roxo);border-radius:28px;padding:48px 32px;text-align:center;overflow:hidden}
+  .midcta-box{position:relative;background-image:linear-gradient(150deg,rgba(18,14,31,.75),rgba(18,14,31,.55)),url('imagens/fundo-midcta.jpg');background-size:cover;background-position:center;border:1px solid var(--line-roxo);border-radius:28px;padding:48px 32px;text-align:center;overflow:hidden}
   .midcta-box::before{content:"";position:absolute;top:-50px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,111,181,.3),transparent 70%);filter:blur(40px);pointer-events:none}
   .midcta-box::after{content:"";position:absolute;bottom:-50px;left:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(139,47,201,.3),transparent 70%);filter:blur(40px);pointer-events:none}
   .midcta-box>*{position:relative;z-index:1}
@@ -258,8 +263,9 @@
   .faq-a p{padding:0 22px 20px;color:var(--bone-dim);font-size:.92rem;line-height:1.6}
 
   /* ===== QUEM ESTÁ POR TRÁS ===== */
-  .founder{padding:40px 0 50px;border-top:1px solid var(--line)}
-  .founder-box{display:grid;grid-template-columns:230px 1fr;gap:34px;align-items:center;background:linear-gradient(160deg,var(--ink-soft),rgba(28,22,48,.5));border:1px solid var(--line);border-radius:24px;padding:34px;overflow:hidden}
+  .founder{padding:40px 0 50px;border-top:1px solid var(--line);position:relative;isolation:isolate;background-image:url('imagens/fundo-fundadora.jpg');background-size:cover;background-position:center}
+  .founder::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--ink) 0%,rgba(18,14,31,.82) 20%,rgba(18,14,31,.82) 80%,var(--ink) 100%)}
+  .founder-box{display:grid;grid-template-columns:230px 1fr;gap:34px;align-items:center;background:linear-gradient(160deg,rgba(28,22,48,.78),rgba(18,14,31,.7));backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:24px;padding:34px;overflow:hidden}
   .founder-photo{aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:linear-gradient(135deg,var(--ink-2),var(--ink-soft));border:1px solid var(--line-roxo);position:relative;display:flex;align-items:center;justify-content:center}
   .founder-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
   .founder-photo .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--bone-dim);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;opacity:.5;text-align:center;padding:14px}
@@ -294,8 +300,8 @@
 <div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="veil"></div>
 <header id="top">
-  <button class="menu-btn" id="menuBtn" aria-label="Abrir menu"><span></span><span></span><span></span></button>
-  <div class="logo intro"><span class="kicker">Agência</span><span class="word">BITTO</span></div>
+  <button class="menu-btn" id="menuBtn" aria-label="Abrir menu"><span class="mbars"><span></span><span></span></span><span class="mtxt" id="menuBtnTxt">Menu</span></button>
+  <div class="logo intro"><span class="kicker">Agência</span><span class="word">Bitto</span></div>
   <div class="header-actions">
     <a class="header-wa" href="https://wa.me/5516981698918" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></a>
     <a href="#contato" class="nav-cta">Fale comigo</a>
@@ -304,24 +310,26 @@
 
 <div class="menu-overlay" id="menuOverlay"></div>
 <aside class="side-menu" id="sideMenu">
-  <div class="sm-head">
-    <span class="sm-logo"><span class="sk">Agência</span><span class="sw">BITTO</span></span>
-    <button class="sm-close" id="smClose" aria-label="Fechar menu">&#10005;</button>
-  </div>
-  <nav>
-    <a href="#sobre"><span class="num">01</span><span class="txt"><b>Sobre</b><small>Quem é a Bitto</small></span></a>
-    <a href="#trabalhos"><span class="num">02</span><span class="txt"><b>Cases</b><small>Antes e depois</small></span></a>
-    <a href="#como-funciona"><span class="num">03</span><span class="txt"><b>Como funciona</b><small>O processo</small></span></a>
-    <a href="#planos"><span class="num">04</span><span class="txt"><b>Planos</b><small>Escolha o seu ritmo</small></span></a>
-    <a href="#depoimentos"><span class="num">05</span><span class="txt"><b>Feedbacks</b><small>O que dizem da Bitto</small></span></a>
-    <a href="#faq"><span class="num">06</span><span class="txt"><b>Dúvidas</b><small>Perguntas frequentes</small></span></a>
-    <a href="#contato"><span class="num">07</span><span class="txt"><b>Contato</b><small>Vamos conversar</small></span></a>
-  </nav>
-  <div class="sm-foot">
-    <a class="fc" href="#contato">Fale comigo</a>
-    <div class="sm-contacts">
-      <a href="https://instagram.com/vicbitto.mkt" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>Instagram</a>
-      <a href="https://wa.me/5516981698918" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>WhatsApp</a>
+  <div class="sm-scroll">
+    <div class="sm-head">
+      <span class="sm-logo"><span class="sk">Agência</span><span class="sw">Bitto</span></span>
+      <button class="sm-close" id="smClose" aria-label="Fechar menu">&#10005;</button>
+    </div>
+    <nav>
+      <a href="#sobre"><span class="num">01</span><b>Sobre</b></a>
+      <a href="#trabalhos"><span class="num">02</span><b>Cases</b></a>
+      <a href="#como-funciona"><span class="num">03</span><b>Como funciona</b></a>
+      <a href="#planos"><span class="num">04</span><b>Planos</b></a>
+      <a href="#depoimentos"><span class="num">05</span><b>Feedbacks</b></a>
+      <a href="#faq"><span class="num">06</span><b>Dúvidas</b></a>
+      <a href="#contato"><span class="num">07</span><b>Contato</b></a>
+    </nav>
+    <div class="sm-foot">
+      <a class="fc" href="#contato">Fale comigo</a>
+      <div class="sm-contacts">
+        <a href="https://instagram.com/vicbitto.mkt" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>Instagram</a>
+        <a href="https://wa.me/5516981698918" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>WhatsApp</a>
+      </div>
     </div>
   </div>
 </aside>
@@ -554,15 +562,15 @@
   </div>
 </section>
 
-<footer><div class="wrap"><div class="logo"><span class="kicker">Agência</span><span class="word">BITTO</span></div><small>Presença digital com propósito.</small></div></footer>
+<footer><div class="wrap"><div class="logo"><span class="kicker">Agência</span><span class="word">Bitto</span></div><small>Presença digital com propósito.</small></div></footer>
 
 <script>
   var header=document.getElementById('top');
   window.addEventListener('scroll',function(){header.classList.toggle('solid',window.scrollY>60)});
 
   // menu lateral
-  var openMenu=function(){document.body.classList.add('menu-open')};
-  var closeMenu=function(){document.body.classList.remove('menu-open')};
+  var openMenu=function(){document.body.classList.add('menu-open');document.getElementById('menuBtnTxt').textContent='Fechar'};
+  var closeMenu=function(){document.body.classList.remove('menu-open');document.getElementById('menuBtnTxt').textContent='Menu'};
   document.getElementById('menuBtn').addEventListener('click',openMenu);
   document.getElementById('smClose').addEventListener('click',closeMenu);
   document.getElementById('menuOverlay').addEventListener('click',closeMenu);
