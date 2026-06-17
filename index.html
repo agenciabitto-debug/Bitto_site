@@ -47,14 +47,15 @@
   .logo{text-align:center;line-height:1}
   .logo .kicker{display:block;font-family:'Outfit',sans-serif;font-weight:600;font-size:.5rem;letter-spacing:.45em;text-indent:.45em;text-transform:uppercase;color:var(--laranja-bright);margin-bottom:.35em}
   .logo .word{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.6rem;letter-spacing:.01em;text-transform:none;background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .nav-cta{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--ink);text-decoration:none;background:var(--laranja-bright);padding:11px 20px;border-radius:100px;transition:.3s;font-family:'Outfit',sans-serif}
+  .nav-cta{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--laranja-bright);text-decoration:none;background:transparent;border:1.5px solid var(--laranja-bright);padding:10px 19px;border-radius:100px;transition:.3s;font-family:'Outfit',sans-serif}
+  .nav-cta:hover{background:rgba(255,193,90,.1)}
   .nav-cta:hover{transform:scale(1.05)}
   @keyframes navReveal{from{opacity:0}to{opacity:1}}
 
   /* botão hambúrguer */
-  .menu-btn{position:absolute;left:14px;top:50%;transform:translateY(-50%);height:38px;padding:0 16px;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:100px;cursor:pointer;z-index:170;opacity:0;animation:navReveal .6s ease 2.5s forwards;transition:.3s}
-  .menu-btn:hover{border-color:var(--line-roxo);background:rgba(139,47,201,.14)}
-  .menu-btn .mtxt{font-family:'Outfit',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.16em;color:var(--bone);text-transform:uppercase}
+  .menu-btn{position:absolute;left:14px;top:50%;transform:translateY(-50%);height:auto;padding:10px 19px;display:flex;align-items:center;gap:8px;background:transparent;border:1.5px solid var(--laranja-bright);border-radius:100px;cursor:pointer;z-index:170;opacity:0;animation:navReveal .6s ease 2.5s forwards;transition:.3s}
+  .menu-btn:hover{background:rgba(255,193,90,.1)}
+  .menu-btn .mtxt{font-family:'Outfit',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.16em;color:var(--laranja-bright);text-transform:uppercase}
   .menu-btn .mbars{display:flex;flex-direction:column;gap:3px}
   .header-actions{position:absolute;right:26px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:10px;opacity:0;animation:navReveal .6s ease 2.5s forwards}
   .header-wa{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;transition:.3s;background:linear-gradient(135deg,var(--roxo),var(--rosa));box-shadow:0 4px 14px rgba(255,111,181,.25)}
@@ -196,7 +197,7 @@
   .plan-tabs{display:flex;gap:8px;margin-bottom:24px}
   .plan-tab{flex:1;text-align:center;padding:13px 8px;border-radius:100px;border:1px solid var(--line);font-family:'Outfit',sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.02em;color:var(--bone-dim);cursor:pointer;transition:.3s;background:transparent;text-transform:uppercase}
   .plan-tab.active{background:linear-gradient(120deg,var(--roxo),var(--rosa),var(--laranja));color:#fff;border-color:transparent}
-  .plan-swipe{position:relative;transition:height .3s ease;overflow:hidden}
+  .plan-swipe{position:relative;transition:height .3s ease;padding-top:14px}
   .plan-panel{display:none}
   .plan-panel.active{display:block}
   .plan-panel.active .plano{animation:planoSlideIn .38s cubic-bezier(.4,0,.2,1)}
@@ -211,7 +212,7 @@
   .plano.featured{border-color:var(--roxo-bright);box-shadow:0 20px 50px rgba(198,107,255,.25)}
   .plano .ribbon{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:.6rem;letter-spacing:.03em;text-transform:uppercase;font-weight:800;padding:7px 16px;border-radius:100px;color:#fff;white-space:nowrap;background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));font-family:'Outfit',sans-serif}
   .plano .ptag{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--laranja-bright);font-weight:700;font-family:'Outfit',sans-serif}
-  .plano h3{font-weight:900;font-size:2.1rem;letter-spacing:-.02em;margin:6px 0 12px}
+  .plano h3{font-weight:900;font-size:2.1rem;letter-spacing:-.02em;margin:0 0 12px}
   .plano .ideal{font-size:.88rem;color:var(--bone-dim);margin-bottom:24px;min-height:60px}
   .plano ul{list-style:none;display:grid;gap:13px;margin-bottom:26px;flex:1}
   .plano li{display:flex;gap:11px;font-size:.92rem;align-items:flex-start;font-weight:400}
@@ -261,6 +262,12 @@
   .plano .emo{display:block;font-family:'Sora',sans-serif;font-weight:400;font-size:.82rem;color:var(--laranja-bright);margin:-6px 0 14px;letter-spacing:.02em}
 
   /* ===== MODAL DE AGRADECIMENTO ===== */
+  /* ===== BOTÃO VOLTAR AO TOPO ===== */
+  .back-to-top{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--roxo),var(--rosa),var(--laranja));border:none;display:grid;place-items:center;cursor:pointer;z-index:160;box-shadow:0 8px 24px rgba(139,47,201,.4);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .3s ease,transform .3s ease,visibility .3s ease}
+  .back-to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+  .back-to-top svg{width:20px;height:20px;stroke:#fff}
+  .back-to-top:hover{transform:translateY(-3px)}
+
   .thanks-overlay{position:fixed;inset:0;background:rgba(8,6,14,.72);backdrop-filter:blur(3px);z-index:300;display:flex;align-items:center;justify-content:center;padding:26px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
   .thanks-overlay.show{opacity:1;visibility:visible}
   .thanks-box{position:relative;background:linear-gradient(160deg,var(--ink-2),var(--ink));border:1px solid var(--line-roxo);border-radius:26px;padding:42px 30px;text-align:center;max-width:340px;box-shadow:0 30px 70px rgba(0,0,0,.55);transform:scale(.85) translateY(14px);transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
@@ -274,14 +281,16 @@
 
   /* ===== FAQ ===== */
   .faq{padding:40px 0 50px;border-top:1px solid var(--line)}
-  .faq-list{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
-  .faq-item{background:linear-gradient(160deg,var(--ink-soft),rgba(28,22,48,.5));border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .3s}
-  .faq-item.open{border-color:var(--line-roxo)}
-  .faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;color:var(--bone);font-family:'Outfit',sans-serif;font-weight:600;font-size:1.02rem}
-  .faq-q .ic{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:rgba(139,47,201,.18);color:var(--laranja-bright);font-size:1.2rem;transition:transform .35s}
-  .faq-item.open .faq-q .ic{transform:rotate(45deg)}
-  .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
-  .faq-a p{padding:0 22px 20px;color:var(--bone-dim);font-size:.92rem;line-height:1.6}
+  .faq-list{max-width:680px;margin:0 auto;display:flex;flex-direction:column}
+  .faq-item{border-top:1px solid var(--line)}
+  .faq-item:first-child{border-top:none}
+  .faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:18px 0;display:flex;align-items:flex-start;gap:14px;color:var(--bone);font-family:'Outfit',sans-serif;font-weight:700;font-size:.98rem}
+  .faq-num{color:var(--laranja-bright);font-weight:800;font-size:.82rem;flex-shrink:0;margin-top:3px}
+  .faq-qtext{flex:1}
+  .faq-q .ic{margin-left:auto;flex:none;color:var(--bone-dim);font-size:1.2rem;transition:transform .3s}
+  .faq-item.open .faq-q .ic{transform:rotate(45deg);color:var(--laranja-bright)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;padding-left:32px}
+  .faq-a p{padding:0 0 18px;color:var(--bone-dim);font-size:.9rem;line-height:1.6}
 
   /* ===== QUEM ESTÁ POR TRÁS ===== */
   .founder{padding:60px 0 70px;border-top:1px solid var(--line);position:relative;isolation:isolate;z-index:0;text-align:center;overflow:hidden}
@@ -484,7 +493,7 @@
     </div>
     <div class="plan-swipe" id="planSwipe">
     <div class="plan-panel" id="plano-1">
-      <article class="plano reveal"><span class="ptag">Plano</span><h3>Essencial</h3><span class="emo">Para começar certo</span><p class="ideal">Pra quem tá começando e quer presença constante, sem dor de cabeça.</p><ul>
+      <article class="plano reveal"><h3>Essencial</h3><span class="emo">Para começar certo</span><p class="ideal">Pra quem tá começando e quer presença constante, sem dor de cabeça.</p><ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><b>4 posts no mês</b> <span class="mini">(um por semana)</span></span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Presença digital ativa e profissional</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Mais organização e consistência</span></li>
@@ -492,7 +501,7 @@
       </ul><a href="#contato" class="btn btn-ghost">Quero esse</a></article>
     </div>
     <div class="plan-panel active" id="plano-2">
-      <article class="plano featured reveal"><span class="ribbon">Mais completo</span><span class="ptag">Plano</span><h3>Dominância</h3><span class="emo">Para virar referência</span><p class="ideal">Pra quem quer ser O nome do nicho. Referência mesmo.</p><ul>
+      <article class="plano featured reveal"><span class="ribbon">Mais completo</span><h3>Dominância</h3><span class="emo">Para virar referência</span><p class="ideal">Pra quem quer ser O nome do nicho. Referência mesmo.</p><ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><b>12 posts no mês</b> <span class="mini">(três por semana)</span></span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><b>2 captações</b> no mês <span class="mini">(até 3h)</span></span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Agendamento e calendário de conteúdo</span></li>
@@ -503,7 +512,7 @@
       </ul><a href="#contato" class="btn btn-solid">Quero esse</a></article>
     </div>
     <div class="plan-panel" id="plano-3">
-      <article class="plano reveal"><span class="ptag">Plano</span><h3>Performance</h3><span class="emo">Para crescer com constância</span><p class="ideal">Pra quem tá crescendo e quer aparecer muito mais.</p><ul>
+      <article class="plano reveal"><h3>Performance</h3><span class="emo">Para crescer com constância</span><p class="ideal">Pra quem tá crescendo e quer aparecer muito mais.</p><ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><b>8 posts no mês</b> <span class="mini">(dois por semana)</span></span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><b>1 captação</b> no mês <span class="mini">(até 3h)</span></span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Agendamento e calendário de conteúdo</span></li>
@@ -555,19 +564,19 @@
     <div class="sec-head reveal"><span class="eyebrow">FAQ</span><h2>Dúvidas <em>frequentes</em></h2></div>
     <div class="faq-list reveal">
       <div class="faq-item">
-        <button class="faq-q">Preciso gravar vídeos?<span class="ic">+</span></button>
+        <button class="faq-q"><span class="faq-num">01</span><span class="faq-qtext">Preciso gravar vídeos?</span><span class="ic">+</span></button>
         <div class="faq-a"><p>Depende do plano e da estratégia. Em alguns casos a gente combina captações; em outros, o foco é design e conteúdo.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Você cria tudo?<span class="ic">+</span></button>
+        <button class="faq-q"><span class="faq-num">02</span><span class="faq-qtext">Você cria tudo?</span><span class="ic">+</span></button>
         <div class="faq-a"><p>Sim. Estratégia, design e posicionamento — do planejamento à entrega do conteúdo.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Atende qualquer nicho?<span class="ic">+</span></button>
+        <button class="faq-q"><span class="faq-num">03</span><span class="faq-qtext">Atende qualquer nicho?</span><span class="ic">+</span></button>
         <div class="faq-a"><p>Sim, desde que exista alinhamento com a proposta e com o tipo de trabalho da Bitto.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Quanto tempo até começar?<span class="ic">+</span></button>
+        <button class="faq-q"><span class="faq-num">04</span><span class="faq-qtext">Quanto tempo até começar?</span><span class="ic">+</span></button>
         <div class="faq-a"><p>Após o alinhamento inicial, iniciamos rapidamente — sem enrolação.</p></div>
       </div>
     </div>
@@ -597,9 +606,23 @@
   </div>
 </div>
 
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button>
+
 <script>
   var header=document.getElementById('top');
   window.addEventListener('scroll',function(){header.classList.toggle('solid',window.scrollY>60)});
+
+  // botão voltar ao topo
+  (function(){
+    var btn=document.getElementById('backToTop');
+    if(!btn)return;
+    window.addEventListener('scroll',function(){
+      btn.classList.toggle('show', window.scrollY>500);
+    });
+    btn.addEventListener('click',function(){
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  })();
 
   // abas dos planos
   function showPlano(n, dir){
