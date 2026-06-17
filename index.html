@@ -70,10 +70,10 @@
   body.menu-open .menu-overlay{opacity:1;visibility:visible}
 
   /* painel lateral */
-  .side-menu{position:fixed;top:0;left:0;bottom:0;width:min(82vw,340px);background-image:url('imagens/fundo-menu.jpg');background-size:cover;background-position:center;border-right:1px solid var(--line-roxo);z-index:190;transform:translateX(-100%);transition:transform .45s cubic-bezier(.6,0,.25,1);display:flex;flex-direction:column;box-shadow:20px 0 60px rgba(0,0,0,.5);overflow:hidden}
+  .side-menu{position:fixed;top:0;left:0;bottom:0;width:min(82vw,340px);border-right:1px solid var(--line-roxo);z-index:190;transform:translateX(-100%);transition:transform .45s cubic-bezier(.6,0,.25,1);display:flex;flex-direction:column;box-shadow:20px 0 60px rgba(0,0,0,.5);overflow:hidden}
   body.menu-open .side-menu{transform:translateX(0)}
-  .side-menu::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(18,14,31,.55) 0%,rgba(18,14,31,.78) 55%,var(--ink) 100%)}
-  .side-menu::after{content:"";position:absolute;bottom:-40px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(240,160,40,.18),transparent 70%);filter:blur(40px);pointer-events:none;z-index:0}
+  .side-menu::before{content:"";position:absolute;inset:-20px;z-index:-1;background-image:url('imagens/fundo-menu.jpg');background-size:cover;background-position:center;filter:blur(18px)}
+  .side-menu .sm-overlay{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(18,14,31,.93) 0%,rgba(18,14,31,.85) 18%,rgba(18,14,31,.7) 40%,rgba(18,14,31,.82) 60%,var(--ink) 100%)}
   .side-menu>*{position:relative;z-index:1}
   .side-menu .sm-scroll{flex:1;overflow-y:auto;padding:30px 28px;display:flex;flex-direction:column;-webkit-overflow-scrolling:touch}
   .side-menu .sm-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:44px;flex-shrink:0}
@@ -339,6 +339,7 @@
 
 <div class="menu-overlay" id="menuOverlay"></div>
 <aside class="side-menu" id="sideMenu">
+  <div class="sm-overlay"></div>
   <div class="sm-scroll">
     <div class="sm-head">
       <span class="sm-title">Menu</span>
