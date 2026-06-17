@@ -69,16 +69,14 @@
   body.menu-open .menu-overlay{opacity:1;visibility:visible}
 
   /* painel lateral */
-  .side-menu{position:fixed;top:0;left:0;bottom:0;width:min(82vw,340px);background:linear-gradient(160deg,var(--ink-2),var(--ink));border-right:1px solid var(--line-roxo);z-index:190;transform:translateX(-100%);transition:transform .45s cubic-bezier(.6,0,.25,1);display:flex;flex-direction:column;box-shadow:20px 0 60px rgba(0,0,0,.5);overflow:hidden}
+  .side-menu{position:fixed;top:0;left:0;bottom:0;width:min(82vw,340px);background-image:url('imagens/fundo-menu.jpg');background-size:cover;background-position:center;border-right:1px solid var(--line-roxo);z-index:190;transform:translateX(-100%);transition:transform .45s cubic-bezier(.6,0,.25,1);display:flex;flex-direction:column;box-shadow:20px 0 60px rgba(0,0,0,.5);overflow:hidden}
   body.menu-open .side-menu{transform:translateX(0)}
-  .side-menu::before{content:"";position:absolute;top:-60px;left:-60px;width:240px;height:240px;background:radial-gradient(circle,rgba(139,47,201,.35),transparent 70%);filter:blur(40px);pointer-events:none}
-  .side-menu::after{content:"";position:absolute;bottom:-40px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(240,160,40,.22),transparent 70%);filter:blur(40px);pointer-events:none}
+  .side-menu::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(18,14,31,.55) 0%,rgba(18,14,31,.78) 55%,var(--ink) 100%)}
+  .side-menu::after{content:"";position:absolute;bottom:-40px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(240,160,40,.18),transparent 70%);filter:blur(40px);pointer-events:none;z-index:0}
   .side-menu>*{position:relative;z-index:1}
   .side-menu .sm-scroll{flex:1;overflow-y:auto;padding:30px 28px;display:flex;flex-direction:column;-webkit-overflow-scrolling:touch}
   .side-menu .sm-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:44px;flex-shrink:0}
-  .side-menu .sm-logo{line-height:1}
-  .side-menu .sm-logo .sk{display:block;font-family:'Outfit',sans-serif;font-weight:600;font-size:.5rem;letter-spacing:.42em;text-transform:uppercase;color:var(--laranja-bright);margin-bottom:.35em}
-  .side-menu .sm-logo .sw{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.4rem;letter-spacing:.01em;text-transform:none;background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .side-menu .sm-title{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:.06em;text-transform:uppercase;color:var(--bone)}
   .side-menu .sm-close{width:36px;height:36px;display:grid;place-items:center;background:transparent;border:1px solid var(--line);border-radius:10px;cursor:pointer;color:var(--bone-dim);font-size:1.1rem;transition:.3s}
   .side-menu .sm-close:hover{border-color:var(--roxo-bright);color:var(--bone)}
   .side-menu nav{display:flex;flex-direction:column}
@@ -134,14 +132,11 @@
   .manifesto .lead{display:block;font-weight:900;font-size:1.9em;line-height:1.02;margin-bottom:.35em;background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
   .manifesto .hl{background:linear-gradient(120deg,var(--roxo-bright),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
 
-  .pillars{padding:10px 0 50px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .pillar{background:linear-gradient(160deg,var(--ink-soft),rgba(28,22,48,.5));border:1px solid var(--line);border-radius:12px;padding:22px 20px;transition:.4s;position:relative;overflow:hidden}
-  .pillar::after{content:"";position:absolute;inset:0;border-radius:12px;padding:1px;background:linear-gradient(160deg,var(--line-roxo),transparent 60%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .4s}
-  .pillar:hover{transform:translateY(-6px)}
-  .pillar:hover::after{opacity:1}
-  .pillar-ico{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(139,47,201,.22),rgba(240,160,40,.18));border:1px solid var(--line);margin-bottom:13px}
-  .pillar-ico svg{width:20px;height:20px;stroke:var(--laranja-bright);fill:none;stroke-width:1.7}
-  .pillar h3{font-weight:800;font-size:1.2rem;margin-bottom:6px;letter-spacing:-.01em}
+  .pillars{padding:10px 0 50px;display:flex;flex-direction:column}
+  .pillar{padding:22px 0;position:relative;display:grid;grid-template-columns:64px 1fr;gap:18px;align-items:start}
+  .pillar+.pillar{border-top:1px solid var(--line)}
+  .pillar-num{font-family:'Outfit',sans-serif;font-weight:900;font-size:2.4rem;line-height:1;background:linear-gradient(160deg,var(--roxo-bright),var(--rosa));-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.85}
+  .pillar h3{font-weight:800;font-size:1.2rem;margin-bottom:6px;margin-top:6px;letter-spacing:-.01em}
   .pillar p{color:var(--bone-dim);font-size:.88rem;line-height:1.5}
 
   .sec-head{text-align:center;margin-bottom:34px}
@@ -174,11 +169,14 @@
   .port-note{text-align:center;color:var(--bone-dim);font-size:.82rem;margin-top:22px}
 
   /* depoimentos */
-  .depo{padding:40px 0 50px;border-top:1px solid var(--line);overflow:hidden}
-  .depo-track-wrap{overflow:hidden;padding:6px 0}
-  .depo-track{display:flex;gap:16px;width:max-content;will-change:transform}
-  .depo-card{flex:0 0 300px;background:linear-gradient(160deg,var(--ink-soft),rgba(28,22,48,.55));border:1px solid var(--line);border-radius:18px;padding:24px 22px;display:flex;flex-direction:column;margin-left:0}
-  .depo-track>.depo-card:first-child{margin-left:26px}
+  .depo{padding:40px 0 50px;border-top:1px solid var(--line)}
+  .depo-story{background:linear-gradient(160deg,var(--ink-soft),rgba(28,22,48,.55));border:1px solid var(--line-roxo);border-radius:18px;padding:24px 22px;display:flex;flex-direction:column;min-height:230px}
+  .depo-bars{display:flex;gap:5px;margin-bottom:18px}
+  .depo-bar{height:3px;flex:1;background:var(--line);border-radius:3px;overflow:hidden}
+  .depo-bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--roxo-bright),var(--laranja));border-radius:3px}
+  .depo-bar.done .depo-bar-fill{width:100%;transition:none}
+  .depo-bar.active .depo-bar-fill{animation:depoFill 4.5s linear forwards}
+  @keyframes depoFill{from{width:0}to{width:100%}}
   .depo-stars{display:flex;gap:3px;margin-bottom:14px}
   .depo-stars svg{width:16px;height:16px;fill:var(--laranja-bright);stroke:none}
   .depo-text{font-size:.92rem;line-height:1.55;color:var(--bone);flex:1}
@@ -195,8 +193,15 @@
   }
 
   .planos{padding:40px 0 50px}
-  .planos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .plano{background:var(--ink-soft);border:2px solid var(--line);border-radius:24px;padding:32px 26px;position:relative;display:flex;flex-direction:column;transition:.35s}
+  .plan-tabs{display:flex;gap:8px;margin-bottom:24px}
+  .plan-tab{flex:1;text-align:center;padding:13px 8px;border-radius:100px;border:1px solid var(--line);font-family:'Outfit',sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.02em;color:var(--bone-dim);cursor:pointer;transition:.3s;background:transparent;text-transform:uppercase}
+  .plan-tab.active{background:linear-gradient(120deg,var(--roxo),var(--rosa),var(--laranja));color:#fff;border-color:transparent}
+  .plan-panel{display:none}
+  .plan-panel.active{display:block}
+  .plan-dots{display:flex;justify-content:center;gap:8px;margin-top:18px}
+  .plan-dots span{width:8px;height:8px;border-radius:100px;background:var(--line-roxo);cursor:pointer;transition:.3s}
+  .plan-dots span.active{background:var(--laranja-bright);width:22px}
+  .plano{background:var(--ink-soft);border:2px solid var(--line);border-radius:24px;padding:32px 26px;position:relative;display:flex;flex-direction:column;transition:.35s;max-width:420px;margin:0 auto}
   .plano:hover{transform:translateY(-6px);border-color:var(--line-roxo)}
   .plano.featured{border-color:var(--roxo-bright);box-shadow:0 20px 50px rgba(198,107,255,.25)}
   .plano .ribbon{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;font-weight:800;padding:8px 18px;border-radius:100px;color:#fff;white-space:nowrap;background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));font-family:'Outfit',sans-serif}
@@ -227,17 +232,16 @@
   footer .logo{display:block;margin-bottom:18px;font-size:1.1rem}
   footer small{color:#6a6088;font-size:.76rem;letter-spacing:.08em}
 
-  @media(max-width:760px){.pillars{grid-template-columns:1fr}.planos-grid{grid-template-columns:1fr}.plano .ideal{min-height:0}.header-actions{gap:0}.header-wa{display:none}.nav-cta{display:inline-block;font-size:.64rem;padding:9px 15px}}
+  @media(max-width:760px){.plano .ideal{min-height:0}.header-actions{gap:0}.header-wa{display:none}.nav-cta{display:inline-block;font-size:.64rem;padding:9px 15px}}
 
   /* ===== COMO FUNCIONA ===== */
   .howto{padding:40px 0 50px;border-top:1px solid var(--line)}
-  .timeline{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:8px}
-  .timeline::before{content:"";position:absolute;top:32px;left:8%;right:8%;height:2px;background:linear-gradient(90deg,var(--roxo),var(--rosa),var(--laranja));opacity:.4;z-index:0}
-  .step-card{position:relative;z-index:1;background:linear-gradient(160deg,var(--ink-soft),rgba(28,22,48,.55));border:1px solid var(--line);border-radius:18px;padding:26px 18px;transition:transform .35s,border-color .35s;display:flex;flex-direction:column;align-items:center}
-  .step-card:hover{transform:translateY(-6px);border-color:var(--line-roxo)}
-  .step-num{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:1.15rem;color:#fff;background:linear-gradient(135deg,var(--roxo),var(--laranja));margin:0 auto 16px;box-shadow:0 6px 18px rgba(139,47,201,.35)}
-  .step-card h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(1rem,3.4vw,1.2rem);text-align:center;margin-bottom:7px;letter-spacing:-.02em;word-break:break-word}
-  .step-card p{color:var(--bone-dim);font-size:.84rem;text-align:center;line-height:1.5}
+  .timeline{display:flex;flex-direction:column;margin-top:8px}
+  .step-row{display:flex;align-items:flex-start;gap:16px;padding:18px 0}
+  .step-row+.step-row{border-top:1px solid var(--line)}
+  .step-num{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;color:var(--laranja-bright);min-width:38px;line-height:1.3;flex-shrink:0}
+  .step-text h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:4px;letter-spacing:-.01em}
+  .step-text p{color:var(--bone-dim);font-size:.86rem;line-height:1.5}
 
   /* ===== CTA MEIO ===== */
   .midcta{padding:54px 0;position:relative;overflow:hidden}
@@ -276,38 +280,33 @@
   .faq-a p{padding:0 22px 20px;color:var(--bone-dim);font-size:.92rem;line-height:1.6}
 
   /* ===== QUEM ESTÁ POR TRÁS ===== */
-  .founder{padding:40px 0 50px;border-top:1px solid var(--line);position:relative;isolation:isolate;background-image:url('imagens/fundo-fundadora.jpg');background-size:cover;background-position:center;z-index:0}
+  .founder{padding:60px 0 70px;border-top:1px solid var(--line);position:relative;isolation:isolate;background-image:url('imagens/fundo-fundadora.jpg');background-size:cover;background-position:center;z-index:0;text-align:center}
   .founder::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,var(--ink) 0%,rgba(18,14,31,.6) 20%,rgba(18,14,31,.6) 80%,var(--ink) 100%)}
   .founder .wrap{position:relative;z-index:2}
-  .founder-box{display:grid;grid-template-columns:230px 1fr;gap:34px;align-items:center;background:linear-gradient(160deg,rgba(28,22,48,.78),rgba(18,14,31,.7));backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:24px;padding:34px;overflow:hidden}
-  .founder-photo{aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:linear-gradient(135deg,var(--ink-2),var(--ink-soft));border:1px solid var(--line-roxo);position:relative;display:flex;align-items:center;justify-content:center}
+  .founder .eyebrow{display:block;color:var(--laranja-bright);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:24px;font-weight:600;font-family:'Outfit',sans-serif}
+  .founder-quote{font-family:'Outfit',sans-serif;font-weight:700;font-size:clamp(1.3rem,5vw,1.9rem);line-height:1.3;letter-spacing:-.01em;max-width:680px;margin:0 auto 28px;position:relative;text-transform:none}
+  .founder-quote .hl{background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .founder-quote::before{content:"\201C";position:absolute;top:-38px;left:50%;transform:translateX(-50%);font-size:4rem;font-family:Georgia,serif;color:var(--line-roxo);font-weight:700;text-transform:none}
+  .founder-foot{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:8px}
+  .founder-photo{width:54px;height:54px;border-radius:100px;overflow:hidden;border:2px solid var(--roxo-bright);flex-shrink:0}
   .founder-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
-  .founder-photo .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--bone-dim);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;opacity:.5;text-align:center;padding:14px}
-  .founder-info .eyebrow{display:block;color:var(--laranja-bright);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:14px;font-weight:600;font-family:'Outfit',sans-serif}
-  .founder-info h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(1.6rem,5vw,2.2rem);letter-spacing:-.02em;margin-bottom:14px}
-  .founder-info p{color:var(--bone-dim);font-size:.96rem;line-height:1.65;margin-bottom:18px}
-  .founder-sign b{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem;color:var(--bone);display:block}
-  .founder-sign small{color:var(--laranja-bright);font-size:.82rem;letter-spacing:.04em}
+  .founder-foot-text{text-align:left}
+  .founder-foot-text b{font-family:'Outfit',sans-serif;font-weight:700;font-size:.92rem;color:var(--bone);display:block;text-transform:none}
+  .founder-foot-text small{color:var(--bone-dim);font-size:.68rem;letter-spacing:.06em}
+  .founder-sub{color:var(--bone-dim);font-size:.86rem;line-height:1.6;max-width:540px;margin:26px auto 0;text-transform:uppercase}
 
   /* hover premium nos cases */
   .case-col img{transition:transform .5s ease}
   .case:hover .case-col img{transform:scale(1.06)}
 
-  @media(max-width:860px){
-    .timeline{grid-template-columns:repeat(2,1fr);gap:14px;align-items:stretch}
-    .timeline::before{display:none}
-  }
   @media(max-width:380px){
-    .step-card{padding:22px 12px}
-    .step-card h3{font-size:.92rem}
-    .step-card p{font-size:.78rem}
+    .step-text h3{font-size:.96rem}
+    .step-text p{font-size:.8rem}
   }
   @media(max-width:640px){
-    .founder-box{grid-template-columns:84px 1fr;gap:16px;text-align:left;padding:20px;align-items:flex-start}
-    .founder-photo{max-width:84px;aspect-ratio:1/1}
-    .founder-info .eyebrow{margin-top:0;letter-spacing:.15em;font-size:.62rem;margin-bottom:8px}
-    .founder-info h2{font-size:1.3rem;margin-bottom:8px;line-height:1.15}
-    .founder-info p{font-size:.84rem;line-height:1.5;margin-bottom:12px}
+    .founder{padding:48px 0 56px}
+    .founder-quote::before{font-size:3rem;top:-28px}
+    .founder-sub{font-size:.8rem}
   }
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.veil{display:none}.reveal{opacity:1;transform:none}.hero h1,.hero .sub,.hero .actions,.nav-cta{opacity:1}.blob{display:none}.logo.intro{opacity:1!important;transform:none!important}.logo.intro .kicker{opacity:1!important;letter-spacing:.45em!important}.logo.intro .word{letter-spacing:.04em!important}}
 </style>
@@ -328,7 +327,7 @@
 <aside class="side-menu" id="sideMenu">
   <div class="sm-scroll">
     <div class="sm-head">
-      <span class="sm-logo"><span class="sk">Agência</span><span class="sw">Bitto</span></span>
+      <span class="sm-title">Menu</span>
       <button class="sm-close" id="smClose" aria-label="Fechar menu">&#10005;</button>
     </div>
     <nav>
@@ -375,9 +374,9 @@
 </section>
 
 <section class="pillars wrap reveal">
-  <div class="pillar"><div class="pillar-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div><h3>Presença</h3><p>Sua marca aparecendo de verdade — com cara, voz e personalidade própria.</p></div>
-  <div class="pillar"><div class="pillar-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></svg></div><h3>Clareza</h3><p>Cada post com um porquê. Estratégia que faz sentido, não achismo.</p></div>
-  <div class="pillar"><div class="pillar-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></div><h3>Conexão</h3><p>Gente conversando com gente. É assim que marca vira favorita.</p></div>
+  <div class="pillar"><span class="pillar-num">01</span><div><h3>Presença</h3><p>Sua marca aparecendo de verdade — com cara, voz e personalidade própria.</p></div></div>
+  <div class="pillar"><span class="pillar-num">02</span><div><h3>Clareza</h3><p>Cada post com um porquê. Estratégia que faz sentido, não achismo.</p></div></div>
+  <div class="pillar"><span class="pillar-num">03</span><div><h3>Conexão</h3><p>Gente conversando com gente. É assim que marca vira favorita.</p></div></div>
 </section>
 
 <section class="portfolio" id="trabalhos">
@@ -451,10 +450,10 @@
     <div class="sec-head reveal"><span class="eyebrow">Processo</span><h2>Como <em>funciona</em></h2></div>
     <p class="sec-sub reveal" style="text-align:center;color:var(--bone-dim);max-width:480px;margin:-22px auto 34px;font-size:.95rem">Um processo simples, estratégico e pensado para gerar resultado.</p>
     <div class="timeline reveal">
-      <div class="step-card"><div class="step-num">1</div><h3>Diagnóstico</h3><p>Entendo sua marca, momento e objetivos.</p></div>
-      <div class="step-card"><div class="step-num">2</div><h3>Estratégia</h3><p>Definimos posicionamento, linha visual e comunicação.</p></div>
-      <div class="step-card"><div class="step-num">3</div><h3>Produção</h3><p>Criação de conteúdo, design e organização.</p></div>
-      <div class="step-card"><div class="step-num">4</div><h3>Crescimento</h3><p>Acompanhamento, ajustes e evolução constante.</p></div>
+      <div class="step-row"><span class="step-num">01</span><div class="step-text"><h3>Diagnóstico</h3><p>Entendo sua marca, momento e objetivos.</p></div></div>
+      <div class="step-row"><span class="step-num">02</span><div class="step-text"><h3>Estratégia</h3><p>Definimos posicionamento, linha visual e comunicação.</p></div></div>
+      <div class="step-row"><span class="step-num">03</span><div class="step-text"><h3>Produção</h3><p>Criação de conteúdo, design e organização.</p></div></div>
+      <div class="step-row"><span class="step-num">04</span><div class="step-text"><h3>Crescimento</h3><p>Acompanhamento, ajustes e evolução constante.</p></div></div>
     </div>
   </div>
 </section>
@@ -473,21 +472,20 @@
 <section class="planos" id="planos">
   <div class="wrap">
     <div class="sec-head reveal"><span class="eyebrow">Planos</span><h2>Escolhe o seu <em>ritmo</em></h2></div>
-    <div class="planos-grid">
+    <div class="plan-tabs">
+      <button class="plan-tab" data-plan="1" onclick="showPlano(1)">Essencial</button>
+      <button class="plan-tab active" data-plan="2" onclick="showPlano(2)">Dominância</button>
+      <button class="plan-tab" data-plan="3" onclick="showPlano(3)">Performance</button>
+    </div>
+    <div class="plan-panel" id="plano-1">
       <article class="plano reveal"><span class="ptag">Plano</span><h3>Essencial</h3><span class="emo">Para começar certo</span><p class="ideal">Pra quem tá começando e quer presença constante, sem dor de cabeça.</p><ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><b>4 posts no mês</b> <span class="mini">(um por semana)</span></span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Presença digital ativa e profissional</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Mais organização e consistência</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Comunicação simples e eficiente</span></li>
       </ul><a href="#contato" class="btn btn-ghost">Quero esse</a></article>
-      <article class="plano reveal"><span class="ptag">Plano</span><h3>Performance</h3><span class="emo">Para crescer com constância</span><p class="ideal">Pra quem tá crescendo e quer aparecer muito mais.</p><ul>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><b>8 posts no mês</b> <span class="mini">(dois por semana)</span></span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><b>1 captação</b> no mês <span class="mini">(até 3h)</span></span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Agendamento e calendário de conteúdo</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Legendas estratégicas</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Reunião de alinhamento mensal</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Design e edição de vídeos simples</span></li>
-      </ul><a href="#contato" class="btn btn-ghost">Quero esse</a></article>
+    </div>
+    <div class="plan-panel active" id="plano-2">
       <article class="plano featured reveal"><span class="ribbon">Mais completo</span><span class="ptag">Plano</span><h3>Dominância</h3><span class="emo">Para virar referência</span><p class="ideal">Pra quem quer ser O nome do nicho. Referência mesmo.</p><ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><b>12 posts no mês</b> <span class="mini">(três por semana)</span></span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><b>2 captações</b> no mês <span class="mini">(até 3h)</span></span></li>
@@ -498,23 +496,36 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><b>Suporte prioritário</b></span></li>
       </ul><a href="#contato" class="btn btn-solid">Quero esse</a></article>
     </div>
+    <div class="plan-panel" id="plano-3">
+      <article class="plano reveal"><span class="ptag">Plano</span><h3>Performance</h3><span class="emo">Para crescer com constância</span><p class="ideal">Pra quem tá crescendo e quer aparecer muito mais.</p><ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><b>8 posts no mês</b> <span class="mini">(dois por semana)</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><b>1 captação</b> no mês <span class="mini">(até 3h)</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Agendamento e calendário de conteúdo</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Legendas estratégicas</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Reunião de alinhamento mensal</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Design e edição de vídeos simples</span></li>
+      </ul><a href="#contato" class="btn btn-ghost">Quero esse</a></article>
+    </div>
+    <div class="plan-dots">
+      <span data-plan="1" onclick="showPlano(1)"></span>
+      <span class="active" data-plan="2" onclick="showPlano(2)"></span>
+      <span data-plan="3" onclick="showPlano(3)"></span>
+    </div>
   </div>
 </section>
 
 <section class="depo" id="depoimentos">
   <div class="wrap">
     <div class="sec-head reveal"><span class="eyebrow">Feedbacks</span><h2>O que dizem sobre a <em>Bitto</em></h2></div>
-  </div>
-  <div class="depo-track-wrap reveal">
-    <div class="depo-track" id="depoTrack">
-      <!-- bloco 1 -->
-      <div class="depo-card"><div class="depo-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg></div><p class="depo-text">"Escolher você pra cuidar da rede social do salão foi a melhor coisa que eu fiz! Você é incrível, atenciosa, detalhista e super paciente. Tô amando o seu trabalho ❤️"</p><div class="depo-who"><span class="depo-av">S</span><span><b>Cliente</b><small>Salão de beleza</small></span></div></div>
-      <div class="depo-card"><div class="depo-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg></div><p class="depo-text">"Vim agradecer! Tem salvado minha vida. Não tenho tempo pra manter minha página atualizada, e contratar seu trabalho foi maravilhoso. Seu capricho e sua atenção aos detalhes... só agradecer. Fim da era das postagens atrasadas!"</p><div class="depo-who"><span class="depo-av">P</span><span><b>Cliente</b><small>Profissional autônoma</small></span></div></div>
-      <div class="depo-card"><div class="depo-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg></div><p class="depo-text">"O pessoal está elogiando muito a página, falam que agora parece profissional. E estou tendo bastante procura pra aula experimental! Antes eu nem falava que tinha página, agora envio o link pra todo mundo."</p><div class="depo-who"><span class="depo-av">A</span><span><b>Cliente</b><small>Professor / aulas</small></span></div></div>
-      <!-- bloco 2 (cópia para loop contínuo) -->
-      <div class="depo-card"><div class="depo-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg></div><p class="depo-text">"Escolher você pra cuidar da rede social do salão foi a melhor coisa que eu fiz! Você é incrível, atenciosa, detalhista e super paciente. Tô amando o seu trabalho ❤️"</p><div class="depo-who"><span class="depo-av">S</span><span><b>Cliente</b><small>Salão de beleza</small></span></div></div>
-      <div class="depo-card"><div class="depo-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg></div><p class="depo-text">"Vim agradecer! Tem salvado minha vida. Não tenho tempo pra manter minha página atualizada, e contratar seu trabalho foi maravilhoso. Seu capricho e sua atenção aos detalhes... só agradecer. Fim da era das postagens atrasadas!"</p><div class="depo-who"><span class="depo-av">P</span><span><b>Cliente</b><small>Profissional autônoma</small></span></div></div>
-      <div class="depo-card"><div class="depo-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg></div><p class="depo-text">"O pessoal está elogiando muito a página, falam que agora parece profissional. E estou tendo bastante procura pra aula experimental! Antes eu nem falava que tinha página, agora envio o link pra todo mundo."</p><div class="depo-who"><span class="depo-av">A</span><span><b>Cliente</b><small>Professor / aulas</small></span></div></div>
+    <div class="depo-story reveal">
+      <div class="depo-bars" id="depoBars">
+        <div class="depo-bar active" data-i="0"><div class="depo-bar-fill"></div></div>
+        <div class="depo-bar" data-i="1"><div class="depo-bar-fill"></div></div>
+        <div class="depo-bar" data-i="2"><div class="depo-bar-fill"></div></div>
+      </div>
+      <div class="depo-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg></div>
+      <p class="depo-text" id="depoText">"Escolher você pra cuidar da rede social do salão foi a melhor coisa que eu fiz! Você é incrível, atenciosa, detalhista e super paciente. Tô amando o seu trabalho ❤️"</p>
+      <div class="depo-who"><span class="depo-av" id="depoAv">S</span><span><b id="depoName">Cliente</b><small id="depoRole">Salão de beleza</small></span></div>
     </div>
   </div>
 </section>
@@ -547,20 +558,13 @@
 <!-- QUEM ESTÁ POR TRÁS -->
 <section class="founder" id="fundadora">
   <div class="wrap reveal">
-    <div class="founder-box">
-      <div class="founder-photo">
-        <img src="imagens/fundadora.jpg" alt="Fundadora da Bitto">
-      </div>
-      <div class="founder-info">
-        <span class="eyebrow">Por trás da Bitto</span>
-        <h2>Estratégia, verdade e conexão</h2>
-        <p>Mais do que posts bonitos, a Bitto nasceu para construir presença digital com estratégia, verdade e conexão. Cada marca atendida recebe atenção real, visão de posicionamento e um processo pensado para crescer com consistência.</p>
-        <div class="founder-sign">
-          <b>Vic</b>
-          <small>Fundadora · Agência Bitto</small>
-        </div>
-      </div>
+    <span class="eyebrow">Por trás da Bitto</span>
+    <p class="founder-quote">Mais do que posts bonitos, a Bitto nasceu para construir <span class="hl">presença digital com estratégia, verdade e conexão</span>.</p>
+    <div class="founder-foot">
+      <div class="founder-photo"><img src="imagens/fundadora.jpg" alt="Victória Bitencourt, fundadora da Bitto"></div>
+      <div class="founder-foot-text"><b>Victória Bitencourt</b><small>Fundadora · Agência Bitto</small></div>
     </div>
+    <p class="founder-sub">Cada marca atendida recebe atenção real, visão de posicionamento e um processo pensado para crescer com consistência.</p>
   </div>
 </section>
 
@@ -591,6 +595,13 @@
 <script>
   var header=document.getElementById('top');
   window.addEventListener('scroll',function(){header.classList.toggle('solid',window.scrollY>60)});
+
+  // abas dos planos
+  function showPlano(n){
+    document.querySelectorAll('.plan-tab').forEach(function(t){ t.classList.toggle('active', t.dataset.plan===String(n)); });
+    document.querySelectorAll('.plan-panel').forEach(function(p){ p.classList.toggle('active', p.id==='plano-'+n); });
+    document.querySelectorAll('.plan-dots span').forEach(function(d){ d.classList.toggle('active', d.dataset.plan===String(n)); });
+  }
 
   // modal de agradecimento
   (function(){
@@ -631,25 +642,36 @@
     document.getElementById('nextBtn').addEventListener('click',function(){scrollByCard(1)});
   }
 
-  // depoimentos: loop infinito suave controlado por JS (nunca para)
+  // depoimentos: estilo stories, com barras de progresso
   (function(){
-    var track=document.getElementById('depoTrack');
-    if(!track)return;
-    var pos=0, speed=0.4, paused=false;
-    function half(){ return track.scrollWidth/2; }
-    track.addEventListener('mouseenter',function(){paused=true});
-    track.addEventListener('mouseleave',function(){paused=false});
-    track.addEventListener('touchstart',function(){paused=true},{passive:true});
-    track.addEventListener('touchend',function(){paused=false},{passive:true});
-    function step(){
-      if(!paused){
-        pos+=speed;
-        if(pos>=half()){ pos-=half(); }
-        track.style.transform='translateX(-'+pos+'px)';
-      }
-      requestAnimationFrame(step);
+    var bars=document.querySelectorAll('#depoBars .depo-bar');
+    if(!bars.length)return;
+    var data=[
+      {text:'"Escolher você pra cuidar da rede social do salão foi a melhor coisa que eu fiz! Você é incrível, atenciosa, detalhista e super paciente. Tô amando o seu trabalho ❤️"', av:'S', name:'Cliente', role:'Salão de beleza'},
+      {text:'"Vim agradecer! Tem salvado minha vida. Não tenho tempo pra manter minha página atualizada, e contratar seu trabalho foi maravilhoso. Seu capricho e sua atenção aos detalhes... só agradecer. Fim da era das postagens atrasadas!"', av:'P', name:'Cliente', role:'Profissional autônoma'},
+      {text:'"O pessoal está elogiando muito a página, falam que agora parece profissional. E estou tendo bastante procura pra aula experimental! Antes eu nem falava que tinha página, agora envio o link pra todo mundo."', av:'A', name:'Cliente', role:'Professor / aulas'}
+    ];
+    var idx=0;
+    var textEl=document.getElementById('depoText');
+    var avEl=document.getElementById('depoAv');
+    var nameEl=document.getElementById('depoName');
+    var roleEl=document.getElementById('depoRole');
+    function render(i){
+      textEl.textContent=data[i].text;
+      avEl.textContent=data[i].av;
+      nameEl.textContent=data[i].name;
+      roleEl.textContent=data[i].role;
     }
-    step();
+    function next(){
+      bars[idx].classList.remove('active');
+      bars[idx].classList.add('done');
+      idx=(idx+1)%data.length;
+      if(idx===0){ bars.forEach(function(b){ b.classList.remove('done'); }); }
+      bars[idx].classList.add('active');
+      render(idx);
+      timer=setTimeout(next,4500);
+    }
+    var timer=setTimeout(next,4500);
   })();
 
   // FAQ accordion
