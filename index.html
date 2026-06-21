@@ -168,6 +168,14 @@
   .pillar p{color:var(--bone-dim);font-size:.88rem;line-height:1.5}
   .pillar.spotlight .pillar-num{opacity:1;transform:scale(1.18);filter:drop-shadow(0 0 16px rgba(255,193,90,.55))}
   .pillar.spotlight h3{background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .pillar:not(.cine-in) .pillar-num{opacity:0;transform:translateY(16px)}
+  .pillar .cine-line{display:block;height:1px;width:0;background:linear-gradient(90deg,var(--laranja-bright),var(--rosa));transition:width .8s ease;margin:2px 0 10px}
+  .pillar.cine-in .cine-line{width:26px}
+  .pillar .title-wrap{overflow:hidden}
+  .pillar .cine-title{display:block;transform:translateY(115%);transition:transform .7s cubic-bezier(.2,.9,.2,1) .12s}
+  .pillar.cine-in .cine-title{transform:translateY(0)}
+  .pillar p{opacity:0;transform:translateY(10px);transition:opacity .6s ease .3s,transform .6s ease .3s}
+  .pillar.cine-in p{opacity:1;transform:none}
 
   .sec-head{text-align:center;margin-bottom:34px}
   .sec-head .eyebrow{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--laranja);background:none;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;font-weight:700;padding:0;border-radius:0;margin-bottom:18px;font-family:'Outfit',sans-serif}
@@ -179,13 +187,18 @@
   .carousel-wrap{position:relative}
   .carousel{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 26px 14px;margin:0 -26px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .carousel::-webkit-scrollbar{display:none}
-  .case{flex:0 0 90%;max-width:420px;scroll-snap-align:center;background:var(--ink-soft);border:1px solid var(--line);border-radius:0;overflow:hidden;transition:border-color .35s}
+  .case{flex:0 0 90%;max-width:420px;scroll-snap-align:center;background:var(--ink-soft);border:1px solid var(--line);border-radius:0;overflow:hidden;transition:border-color .35s,transform .25s ease}
   .case:hover{border-color:var(--line-roxo)}
+  .case:active{transform:scale(.98)}
   .case-imgs{position:relative;background:var(--ink-2)}
   .case-col{position:relative;aspect-ratio:4/5;overflow:hidden;background:linear-gradient(135deg,var(--ink-2),var(--ink-soft));display:flex;align-items:center;justify-content:center}
+  .case-col::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.4) 50%,transparent 65%);transform:translateX(-130%);pointer-events:none;z-index:2}
+  .case.shine .case-col::after{animation:caseShine 1s ease forwards}
+  @keyframes caseShine{to{transform:translateX(130%)}}
   .case-col img{width:100%;height:100%;object-fit:cover;display:block}
   .case-col .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--bone-dim);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.5;padding:10px}
-  .case-tag{position:absolute;bottom:0;left:0;z-index:2;font-family:'Outfit',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;color:var(--ink);background:var(--laranja-bright)}
+  .case-tag{position:absolute;bottom:0;left:0;z-index:2;font-family:'Outfit',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;color:var(--ink);background:var(--laranja-bright);animation:caseTagPulse 2.4s ease-in-out infinite}
+  @keyframes caseTagPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,193,90,.5)}50%{box-shadow:0 0 0 6px rgba(255,193,90,0)}}
   .case-body{padding:18px 20px 22px;border-top:2px solid var(--laranja-bright)}
   .case-handle{display:inline-block;font-family:'Sora',sans-serif;font-weight:400;font-size:.78rem;color:var(--laranja-bright);margin-bottom:6px;letter-spacing:.02em;text-transform:lowercase}
   .case-body h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:-.01em;margin-bottom:6px}
@@ -254,8 +267,10 @@
   .contato h2{font-weight:900;font-size:clamp(2.2rem,8vw,4rem);letter-spacing:-.03em;margin-bottom:14px}
   .contato h2 em{font-style:normal;background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
   .contato .lead{color:var(--bone-dim);max-width:440px;margin:0 auto 32px;font-size:1.05rem}
-  .contato-cta{display:flex;align-items:center;justify-content:center;gap:10px;max-width:420px;margin:0 auto 20px;padding:19px;border-radius:100px;background:linear-gradient(120deg,var(--roxo),var(--rosa),var(--laranja));color:#fff;font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem;text-decoration:none;box-shadow:0 14px 34px rgba(198,107,255,.32);transition:.3s}
+  .contato-cta{display:flex;align-items:center;justify-content:center;gap:10px;max-width:420px;margin:0 auto 20px;padding:19px;border-radius:100px;background:linear-gradient(120deg,var(--roxo),var(--rosa),var(--laranja));background-size:220% 220%;color:#fff;font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem;text-decoration:none;box-shadow:0 14px 34px rgba(198,107,255,.32);transition:transform .15s ease;animation:ctaFlow 4s ease infinite}
+  @keyframes ctaFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
   .contato-cta:hover{transform:translateY(-3px)}
+  .contato-cta:active{transform:scale(.96)}
   .contato-cta svg{width:21px;height:21px;stroke:#fff;flex:none}
   .contato-others{display:flex;justify-content:center;gap:28px}
   .contato-others a{display:flex;align-items:center;gap:7px;color:var(--bone-dim);font-size:.82rem;text-decoration:none;transition:.3s}
@@ -277,19 +292,41 @@
   .step-text h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:4px;letter-spacing:-.01em;transition:.4s}
   .step-row.spotlight .step-num{opacity:1;transform:scale(1.25);filter:drop-shadow(0 0 16px rgba(255,193,90,.6))}
   .step-row.spotlight .step-text h3{background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .step-row:not(.cine-in) .step-num{opacity:0;transform:translateY(16px)}
+  .step-row .cine-line{display:block;height:1px;width:0;background:linear-gradient(90deg,var(--laranja-bright),var(--rosa));transition:width .8s ease;margin:2px 0 8px}
+  .step-row.cine-in .cine-line{width:26px}
+  .step-text .title-wrap{overflow:hidden}
+  .step-text .cine-title{display:block;transform:translateY(115%);transition:transform .7s cubic-bezier(.2,.9,.2,1) .12s}
+  .step-row.cine-in .cine-title{transform:translateY(0)}
+  .step-text p{opacity:0;transform:translateY(10px);transition:opacity .6s ease .3s,transform .6s ease .3s}
+  .step-row.cine-in p{opacity:1;transform:none}
   .step-text p{color:var(--bone-dim);font-size:.86rem;line-height:1.5}
 
   /* ===== CTA MEIO ===== */
   .midcta{padding:10px 0 30px;position:relative;overflow:hidden}
-  .midcta-box{position:relative;background-image:linear-gradient(150deg,rgba(18,14,31,.75),rgba(18,14,31,.55)),url('imagens/fundo-midcta.jpg');background-size:cover;background-position:center;border:1px solid var(--line-roxo);border-radius:22px;padding:30px 22px;text-align:center;overflow:hidden}
-  .midcta-box::before{content:"";position:absolute;top:-50px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,111,181,.3),transparent 70%);filter:blur(40px);pointer-events:none;animation:floatBlob1 9s ease-in-out infinite}
-  .midcta-box::after{content:"";position:absolute;bottom:-50px;left:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(139,47,201,.3),transparent 70%);filter:blur(40px);pointer-events:none;animation:floatBlob2 11s ease-in-out infinite}
-  @keyframes floatBlob1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-14px,16px) scale(1.08)}}
-  @keyframes floatBlob2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(14px,-12px) scale(1.06)}}
+  .midcta-box{position:relative;background-image:linear-gradient(150deg,rgba(18,14,31,.8),rgba(18,14,31,.6)),url('imagens/fundo-midcta.jpg');background-size:cover;background-position:center;border:1px solid var(--line);border-radius:0;padding:38px 22px;text-align:center;overflow:hidden}
   .midcta-box>*{position:relative;z-index:1}
-  .midcta-box h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.35rem,4.6vw,2.2rem);letter-spacing:-.02em;line-height:1.14;margin-bottom:10px}
+  .midcta-corner{position:absolute;width:18px;height:18px;border:2px solid var(--laranja-bright);opacity:0;transition:opacity .6s ease,transform .6s ease;z-index:1}
+  .midcta-box.in .midcta-corner{opacity:1}
+  .midcta-corner.tl{top:10px;left:10px;border-right:none;border-bottom:none;transform:translate(-6px,-6px)}
+  .midcta-box.in .midcta-corner.tl{transform:translate(0,0)}
+  .midcta-corner.tr{top:10px;right:10px;border-left:none;border-bottom:none;transform:translate(6px,-6px)}
+  .midcta-box.in .midcta-corner.tr{transform:translate(0,0)}
+  .midcta-corner.bl{bottom:10px;left:10px;border-right:none;border-top:none;transform:translate(-6px,6px)}
+  .midcta-box.in .midcta-corner.bl{transform:translate(0,0)}
+  .midcta-corner.br{bottom:10px;right:10px;border-left:none;border-top:none;transform:translate(6px,6px)}
+  .midcta-box.in .midcta-corner.br{transform:translate(0,0)}
+  .midcta-eyebrow{font-size:.65rem;letter-spacing:.3em;color:var(--laranja-bright);font-weight:700;margin-bottom:14px;opacity:0;transition:opacity .6s ease .2s}
+  .midcta-box.in .midcta-eyebrow{opacity:1}
+  .midcta-box h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.35rem,4.6vw,2.2rem);letter-spacing:-.02em;line-height:1.14;margin-bottom:10px;opacity:0;transform:translateY(12px);transition:opacity .7s ease .3s,transform .7s ease .3s}
+  .midcta-box.in h2{opacity:1;transform:none}
   .midcta-box h2 em{font-style:normal;background:linear-gradient(120deg,var(--roxo-bright),var(--rosa),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .midcta-box p{color:var(--bone-dim);max-width:480px;margin:0 auto 20px;font-size:.86rem;line-height:1.5}
+  .midcta-box p{color:var(--bone-dim);max-width:480px;margin:0 auto 18px;font-size:.86rem;line-height:1.5;opacity:0;transition:opacity .7s ease .45s}
+  .midcta-box.in p{opacity:1}
+  .midcta-line{width:0;height:1px;background:var(--laranja-bright);margin:0 auto 18px;transition:width .8s ease .55s}
+  .midcta-box.in .midcta-line{width:50px}
+  .midcta-box .btn{opacity:0;transition:opacity .6s ease .7s}
+  .midcta-box.in .btn{opacity:1}
 
   /* frase emocional nos planos */
   .plano .emo{display:block;font-family:'Sora',sans-serif;font-weight:400;font-size:.82rem;color:var(--laranja-bright);margin:-6px 0 14px;letter-spacing:.02em}
@@ -429,10 +466,10 @@
   <p><span class="lead">Marketing pode ser leve.</span>A Bitto nasceu pra mostrar que dá pra crescer no digital de um jeito <span class="hl">real, estratégico e bem mais humano</span> — sem fórmula chata.</p>
 </section>
 
-<section class="pillars wrap reveal-stagger">
-  <div class="pillar"><span class="pillar-num">01</span><div><h3>Presença</h3><p>Sua marca aparecendo de verdade — com cara, voz e personalidade própria.</p></div></div>
-  <div class="pillar"><span class="pillar-num">02</span><div><h3>Clareza</h3><p>Cada post com um porquê. Estratégia que faz sentido, não achismo.</p></div></div>
-  <div class="pillar"><span class="pillar-num">03</span><div><h3>Conexão</h3><p>Gente conversando com gente. É assim que marca vira favorita.</p></div></div>
+<section class="pillars wrap">
+  <div class="pillar"><span class="pillar-num">01</span><div><span class="cine-line"></span><div class="title-wrap"><h3 class="cine-title">Presença</h3></div><p>Sua marca aparecendo de verdade — com cara, voz e personalidade própria.</p></div></div>
+  <div class="pillar"><span class="pillar-num">02</span><div><span class="cine-line"></span><div class="title-wrap"><h3 class="cine-title">Clareza</h3></div><p>Cada post com um porquê. Estratégia que faz sentido, não achismo.</p></div></div>
+  <div class="pillar"><span class="pillar-num">03</span><div><span class="cine-line"></span><div class="title-wrap"><h3 class="cine-title">Conexão</h3></div><p>Gente conversando com gente. É assim que marca vira favorita.</p></div></div>
 </section>
 
 <section class="portfolio" id="trabalhos">
@@ -520,11 +557,11 @@
   <div class="wrap">
     <div class="sec-head reveal"><span class="eyebrow">Processo</span><h2>Como <em>funciona</em></h2></div>
     <p class="sec-sub reveal" style="text-align:center;color:var(--bone-dim);max-width:480px;margin:-22px auto 34px;font-size:.95rem">Um processo simples, estratégico e pensado para gerar resultado.</p>
-    <div class="timeline reveal-stagger">
-      <div class="step-row"><span class="step-num">01</span><div class="step-text"><h3>Diagnóstico</h3><p>Entendo sua marca, momento e objetivos.</p></div></div>
-      <div class="step-row"><span class="step-num">02</span><div class="step-text"><h3>Estratégia</h3><p>Definimos posicionamento, linha visual e comunicação.</p></div></div>
-      <div class="step-row"><span class="step-num">03</span><div class="step-text"><h3>Produção</h3><p>Criação de conteúdo, design e organização.</p></div></div>
-      <div class="step-row"><span class="step-num">04</span><div class="step-text"><h3>Crescimento</h3><p>Acompanhamento, ajustes e evolução constante.</p></div></div>
+    <div class="timeline">
+      <div class="step-row"><span class="step-num">01</span><div class="step-text"><span class="cine-line"></span><div class="title-wrap"><h3 class="cine-title">Diagnóstico</h3></div><p>Entendo sua marca, momento e objetivos.</p></div></div>
+      <div class="step-row"><span class="step-num">02</span><div class="step-text"><span class="cine-line"></span><div class="title-wrap"><h3 class="cine-title">Estratégia</h3></div><p>Definimos posicionamento, linha visual e comunicação.</p></div></div>
+      <div class="step-row"><span class="step-num">03</span><div class="step-text"><span class="cine-line"></span><div class="title-wrap"><h3 class="cine-title">Produção</h3></div><p>Criação de conteúdo, design e organização.</p></div></div>
+      <div class="step-row"><span class="step-num">04</span><div class="step-text"><span class="cine-line"></span><div class="title-wrap"><h3 class="cine-title">Crescimento</h3></div><p>Acompanhamento, ajustes e evolução constante.</p></div></div>
     </div>
   </div>
 </section>
@@ -533,8 +570,11 @@
 <section class="midcta">
   <div class="wrap reveal">
     <div class="midcta-box">
+      <span class="midcta-corner tl"></span><span class="midcta-corner tr"></span><span class="midcta-corner bl"></span><span class="midcta-corner br"></span>
+      <div class="midcta-eyebrow">Convite</div>
       <h2>Sua marca pode ser a próxima <em>transformação</em>.</h2>
       <p>Se você sente que sua presença digital não representa seu potencial, talvez seja hora de mudar isso.</p>
+      <div class="midcta-line"></div>
       <a href="#contato" class="btn btn-solid thanks-trigger">Quero começar</a>
     </div>
   </div>
@@ -780,6 +820,13 @@
     document.getElementById('nextBtn').addEventListener('click',function(){scrollByCard(1)});
   }
 
+  // brilho ao tocar nos cards de case (Opção L)
+  document.querySelectorAll('.case').forEach(function(c){
+    function shine(){ c.classList.remove('shine'); void c.offsetWidth; c.classList.add('shine'); }
+    c.addEventListener('touchstart', shine, {passive:true});
+    c.addEventListener('mouseenter', shine);
+  });
+
   // depoimentos: estilo stories, com barras de progresso
   (function(){
     var bars=document.querySelectorAll('#depoBars .depo-bar');
@@ -839,6 +886,38 @@
       });
     }, {threshold:0.6});
     document.querySelectorAll('.pillar, .step-row').forEach(function(el){ ioSpot.observe(el); });
+  }
+
+  // revelação cinematográfica: linha desenha, título sobe, texto entra — uma vez, por item
+  if('IntersectionObserver' in window){
+    var ioCine = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry,i){
+        if(entry.isIntersecting){
+          entry.target.classList.add('cine-in');
+          ioCine.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.3});
+    document.querySelectorAll('.pillar, .step-row').forEach(function(el){ ioCine.observe(el); });
+  }else{
+    document.querySelectorAll('.pillar, .step-row').forEach(function(el){ el.classList.add('cine-in'); });
+  }
+
+  // entrada do card "Convite" (midcta)
+  if('IntersectionObserver' in window){
+    var ioMid = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          ioMid.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.3});
+    var midBox = document.querySelector('.midcta-box');
+    if(midBox) ioMid.observe(midBox);
+  }else{
+    var midBox2 = document.querySelector('.midcta-box');
+    if(midBox2) midBox2.classList.add('in');
   }
 </script>
 </body>
