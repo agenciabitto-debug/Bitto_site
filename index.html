@@ -15,7 +15,9 @@
     --rosa:#FF6FB5; --bone:#F6F2FF; --bone-dim:#A99FC4;
     --line:rgba(255,255,255,.1); --line-roxo:rgba(198,107,255,.35);
   }
-  *{margin:0;padding:0;box-sizing:border-box}
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+  a,button{-webkit-tap-highlight-color:transparent;outline:none}
+  a:focus,button:focus{outline:none}
   html{scroll-behavior:smooth}
   body{background:var(--ink);color:var(--bone);font-family:'Sora',sans-serif;font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;text-transform:uppercase}
   .wrap{max-width:1100px;margin:0 auto;padding:0 26px}
@@ -357,6 +359,11 @@
 </style>
 </head>
 <body>
+<script>
+  if('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
+  window.scrollTo(0,0);
+  window.addEventListener('load', function(){ window.scrollTo(0,0); });
+</script>
 <div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="veil"></div>
 <header id="top">
